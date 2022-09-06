@@ -14,9 +14,37 @@ abbreviate('hello world'); // => 'hll wrld'
 abbreviate('how are you'); // => 'how are you'
 ***********************************************************************/
 
+function del_vowels(word){
+  let vowels = ['a', 'e', 'i', 'o', 'u'];
+  let unvoweled = '';
+
+  for (let i = 0; i < word.length; i++) {
+    if (vowels.includes(word[i])){
+      continue;
+    } else {
+      unvoweled += word[i];
+    }
+  }
+
+  return unvoweled;
+}
+
 function abbreviate(sentence) {
+  let arr_sentence = sentence.split(' ');
+  let result = [];
+
+  for (let i = 0; i < arr_sentence.length; i++) {
+    if (arr_sentence[i].length > 4) {
+      result.push(del_vowels(arr_sentence[i]));
+    } else {
+      result.push(arr_sentence[i]);
+    }
+  }
+
+  return result.join(' ');
 
 }
 
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
-module.exports = abbreviate;
+ module.exports = abbreviate;
